@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>Перенаправление на служебный сайт Денвера...</title>

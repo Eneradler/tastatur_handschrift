@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <?
 $M1=$_POST['M1'];
 echo $M1;
