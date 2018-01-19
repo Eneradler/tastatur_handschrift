@@ -4,20 +4,24 @@
 }
 
 .head{
- border: solid 1px black;
- height: 120px;
- width: 99%;
- font-style: italic;
- color: #4682B4;
- font-family:'Times New Roman', Times, serif;
- font-weight: bold;
- font-size: 25px;
+	width: 70%;
+	margin: 0 auto;
+	color: #4682B4;
+	font-weight: bold;
+	font-size: 25px;
+	text-align: center;
+	font-family: Philosopher;
 }
 
 body {
 	background-image: url("img/background03.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+}
+
+.menu {
+	position: relative;
+	top: 25px;
 }
 
 ul {
@@ -33,6 +37,7 @@ ul {
 li {
     text-align: center;
     border-bottom: 1px solid #555;
+	font-family: Philosopher;
 }
 
 li:last-child {
@@ -52,7 +57,7 @@ li a:hover {
 }
 
 .active {
-    background-color: #4CAF50;
+    background-color: #4682B4;
     color: white;
 }
 
@@ -62,9 +67,10 @@ li a:hover {
 	margin: 0 auto;
 	background-color: rgba(242, 242, 242, 0.7);
 	border: 1px solid #f2f2f2;
-	border-radius: 10px;
+	border-radius: 20px;
 	text-align: center;
 	font-size: 25px;
+	font-family: Aldrich;
 	position: relative;
 	top: 25px;
 	overflow: auto;
