@@ -1,11 +1,13 @@
 <!DOCTYPE HTML>
 <html>
   <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main page</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" href="img/keyboard.png">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   </head>
-  <body bgcolor="#AFEEEE">
+  <body>
     <? $count=0; ?>
     <form action="1.php?from=formTrain" method="post">
       <p><h2>Enter the phrase 5 times</h2></p/>

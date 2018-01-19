@@ -1,8 +1,10 @@
 <!DOCTYPE HTML>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main page</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" href="img/keyboard.png">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
         $(document).ready(function(){              
@@ -12,17 +14,26 @@
         }); 
     </script>
   </head>
-  <body bgcolor="#AFEEEE">
-    <div class="head" align="center">
+  <body>
+    <div class="head">
       <p>Welcome!</p>
       <p>Typing Rhytm Identification System.</p>
     </div>
-    <div class="info" id="idinfo" align="center"> About </div>
-    <div class="training" id="idtraining" align="center"> <a href="training.html">Training mode </a></div>
-    <div class="enter" id="identer" align="center"><a href="authenticate.html"> Try to authenticate </a></div>
-    <div class="central" id="idcentral" align="center"> 
-      <p><h3>Site guide:</h3></p>
+	<div class="menu">
+	  <ul>
+	    <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="training.html">Training mode</a></li>
+        <li><a href="authenticate.html">Try to authenticate</a></li>
+	  </ul>
+	</div>
+    <div class="main" id="main"> 
+      <h1>Site guide:</h1>
       <table>
+	    <tr>
+          <td>Homepage:</td>
+          <td>Menu tab "Home"</td>
+        </tr>
         <tr>
           <td>General information:</td>
           <td>Menu tab "About"</td>

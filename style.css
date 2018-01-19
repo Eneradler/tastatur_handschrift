@@ -1,3 +1,8 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
 .head{
  border: solid 1px black;
  height: 120px;
@@ -9,53 +14,70 @@
  font-size: 25px;
 }
 
-.info{
-padding: 10px;
-background: #4682B4;
-border: solid 1px black;
-top: 120px;
-height: 60px;
-width: 250px;
-font-family:'Times New Roman', Times, serif;
-font-weight: bold;
-font-size: 26px;
+body {
+	background-image: url("img/background03.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
-.info:hover{
-background: white;
+
+ul {
+	list-style-type: none;
+	width: 20%;
+	background-color: #f1f1f1;
+	border: 1px solid #555;
+	border-radius: 5px;
+	position: fixed;
+    overflow: auto;
 }
-.training{
-padding: 10px;
-background: #B0C4DE;
-border: solid 1px black;
-top: 240px;
-height: 60px;
-width: 250px;
-font-family:'Times New Roman', Times, serif;
-font-weight: bold;
-font-size: 26px;
+
+li {
+    text-align: center;
+    border-bottom: 1px solid #555;
 }
-.training:hover{
-background: white;
+
+li:last-child {
+    border-bottom: none;
 }
-.enter{
-padding: 10px;
-background: #ADD8E6;
-border: solid 1px black;
-top: 360px;
-height: 60px;
-width: 250px;
-font-family:'Times New Roman', Times, serif;
-font-weight: bold;
-font-size: 26px;
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
 }
-.enter:hover{
-background: white;
+
+li a:hover {
+    background-color: #555;
+    color: white;
 }
-.central{
-border: solid 1px black;
-position: absolute;
-left: 281px;
-top: 131;
-height: 500px;
-width: 78%;
+
+.active {
+    background-color: #4CAF50;
+    color: white;
 }
+
+.main {
+	width: 50%;
+	height: 400px;
+	margin: 0 auto;
+	background-color: rgba(242, 242, 242, 0.7);
+	border: 1px solid #f2f2f2;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 25px;
+	position: relative;
+	top: 25px;
+	overflow: auto;
+}
+
+.main table {
+    height: 70%;
+	text-align: left;
+	margin: auto 0;
+}
+
+td {
+	border: 10px solid transparent;
+}
+
+
