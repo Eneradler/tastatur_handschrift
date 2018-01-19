@@ -37,6 +37,6 @@
         fclose($f);
       }
     ?>
-    <p><a href="main.html">Home</a></p>
+    <p><a href="index.html">Home</a></p>
   </body>
 </html>

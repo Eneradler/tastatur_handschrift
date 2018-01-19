@@ -1,117 +1,104 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<title>Training mode</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script>
-var ptime=0;
-var rtime=0;
-var counter = 1;
-var array = [];
-var ptime_container = [];
-var rtime_container = [];
-var massiv = [];
-var i=0;
-var k=0;
-var l=0;
-function count(){
-$('#quantity').val(counter);
-counter++;
-}
+  <head>
+    <title>Training mode</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        var ptime=0;
+        var rtime=0;
+        var counter = 1;
+        var array = [];
+        var ptime_container = [];
+        var rtime_container = [];
+        var massiv = [];
+        var i=0;
+        var k=0;
+        var l=0;
+		
+        function count(){
+            $('#quantity').val(counter);
+            counter++;
+        }
 
-function pushtime(event){
-if(event.which){
- var d = new Date();
- ptime=d.getTime();
- ptime_container[k]=ptime;
- k++;
- }
-}
-function releasetime(event){
-if(event.which){
-var d = new Date();
- rtime=d.getTime();
-rtime_container[l]=rtime;
-l++; 
- }
-}
+        function pushtime(event){
+            if(event.which){
+                var d = new Date();
+                ptime=d.getTime();
+                ptime_container[k]=ptime;
+                k++;
+            }
+        }
+		
+        function releasetime(event){
+            if(event.which){
+                var d = new Date();
+                rtime=d.getTime();
+                rtime_container[l]=rtime;
+                l++; 
+            }
+        }
 
-/*function show()
-{   
+        function save(event){
+            if(event.which){
+                array[i] = rtime-ptime;
+                i++;
+            }
+        }
+		
+        function send(){
+            var sum =0;
+            for (var p in array){
+                sum+=array[p];
+            }
+            var M=sum/array.length;
+            for (var j = 0; j<ptime_container.length-1; j++){
+                massiv[j] = ptime_container[j+1] - rtime_container[j];
+            }
+			sum=0;
+			for (var p in massiv){
+                sum+=massiv[p];
+            }
+            var N=sum/massiv.length;
 
-alert(array);
-alert(ptime_container);
-alert(rtime_container);	
-}*/
-
-function save(event){
-if(event.which){
-array[i] = rtime-ptime;
-
-i++;
-}
-}
-function send(){
-var sum =0;
-for (var p in array){
-sum+=array[p];
-}
-
-var M=sum/array.length;
-
-for (var j = 0; j<ptime_container.length-1; j++){
-massiv[j] = ptime_container[j+1] - rtime_container[j];
-}
-
-sum=0;
-for (var p in massiv){
-sum+=massiv[p];
-}
-
-var N=sum/massiv.length;
-
-$.ajax({
-type:"post",
-url:"training.php",
-data: "M="+M+"&N="+N,
-success: function(html){
-$("#result").empty();
-$("#result").append(html);
-}
-});
-}
-</script>
-</head>
-<body bgcolor="#AFEEEE">
-<div class="head" align="center">
- <p>Добро пожаловать!</p>
- <p>Система с биоментрической аутентификацией по клавиатурному почерку.</p>
- </div>
-<div class="info" id="idinfo" align="center"><a href="main.html"> About </a></div>
-<div class="training" id="idtraining" align="center"> <a href="training.html">Training mode </a></div>
-<div class="enter" id="identer" align="center"><a href="authenticate.html"> Try to authenticate </a></div>
-<div class="central" id="idcentral" align="center"> 
-<form action="training.php" method="post">
-<p><h2>Введите ключевую фразу 5 раз</h2></p/>
-<p><h3>Ключевая фраза: "здравствуйте гость"</h3></p/>
-<table>
-
-<tr>
-<td>Вводите фразу:</td>
-<td>
-<textarea cols="18" rows="6" name="phrase" id="phrase" onKeyDown="pushtime(event)" onKeyUp="releasetime(event); save(event)"></textarea></td>
-<td><div id="result"></div></td>
-</tr>
-<tr>
-<!--<td><input type="button" name="check" value="check" onClick="show()"></td></td>
-<td><input type="button" name="okbutton" value="Ok" onClick="$('#phrase').val(''); count()"></td>-->
-<td><input type="submit" name="accept" value="Принять" onClick="send();return false"></td>
-
-</tr>
-</table>
-</form>
-<p><a href="main.html">На главную</a></p>
-</div>
-</body>
+            $.ajax({
+                type:"post",
+                url:"training.php",
+                data: "M="+M+"&N="+N,
+                success: function(html){
+                    $("#result").empty();
+                    $("#result").append(html);
+                }
+            });
+        }
+    </script>
+  </head>
+  <body bgcolor="#AFEEEE">
+    <div class="head" align="center">
+     <p>Welcome!</p>
+     <p>Typing Rhytm Identification System.</p>
+    </div>
+    <div class="info" id="idinfo" align="center"><a href="index.html"> About </a></div>
+    <div class="training" id="idtraining" align="center"> <a href="training.html">Training mode </a></div>
+    <div class="enter" id="identer" align="center"><a href="authenticate.html"> Try to authenticate </a></div>
+    <div class="central" id="idcentral" align="center"> 
+      <form action="training.php" method="post">
+        <p><h2>Enter the phrase 5 times</h2></p/>
+        <p><h3>The phrase: "hello dear guest"</h3></p/>
+        <table>
+          <tr>
+            <td>Enter the phrase:</td>
+            <td>
+              <textarea cols="18" rows="6" name="phrase" id="phrase" onKeyDown="pushtime(event)" onKeyUp="releasetime(event); save(event)"></textarea>
+	        </td>
+            <td><div id="result"></div></td>
+          </tr>
+          <tr>
+            <td><input type="submit" name="accept" value="Accept" onClick="send();return false"></td>
+          </tr>
+        </table>
+      </form>
+      <p><a href="index.html">Home</a></p>
+    </div>
+  </body>
 </html>

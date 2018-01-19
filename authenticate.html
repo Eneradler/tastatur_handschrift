@@ -1,111 +1,108 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<title>Authentication</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script>
-var downtime=0;
-var uptime=0;
-var pressarray = [];
-var up_container = [];
-var down_container = [];
-var i = 0;
-var k = 0;
-var l = 0;
-var mas = [];
-function keydown(event){
-if(event.which){
- var d = new Date();
- downtime=d.getTime();
- down_container[k] = downtime;
- k++;
- }
-}
-function keyup(event){
-if(event.which){
-var d = new Date();
- uptime=d.getTime(); 
- up_container[l] = uptime;
- l++;
- }
-}
+  <head>
+    <title>Authentication</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        var downtime=0;
+        var uptime=0;
+        var pressarray = [];
+        var up_container = [];
+        var down_container = [];
+        var i = 0;
+        var k = 0;
+        var l = 0;
+        var mas = [];
+		
+        function keydown(event){
+            if(event.which){
+                var d = new Date();
+                downtime=d.getTime();
+                down_container[k] = downtime;
+                k++;
+            }
+        }
+		
+        function keyup(event){
+            if(event.which){
+                var d = new Date();
+                uptime=d.getTime(); 
+                up_container[l] = uptime;
+                l++;
+            }
+        }
 
-function show()
-{   
-alert(pressarray);
-alert(down_container);
-alert(up_container);
-}
-function savetime(event){
-if(event.which){
-pressarray[i] = uptime-downtime;
-i++;
-}
-}
+        function show() {   
+            alert(pressarray);
+            alert(down_container);
+            alert(up_container);
+        }
+		
+        function savetime(event){
+            if(event.which){
+            pressarray[i] = uptime-downtime;
+            i++;
+            }
+        }
 
-function sendData(){
-var sum =0;
-for (var p in pressarray){
-sum+=pressarray[p];
-}
-//alert(sum);
-var M1=sum/pressarray.length;
-
-for (var j = 0; j<down_container.length-1; j++){
-mas[j] = down_container[j+1] - up_container[j];
-}
-//alert(massiv);
-sum=0;
-for (var p in mas){
-sum+=mas[p];
-}
-//alert(sum);
-var N1=sum/mas.length;
-//alert("N="+N);
-$.ajax({
-type:"post",
-url:"authenticate.php",
-data: "M1="+M1+"&N1="+N1,
-success: function(html){
-$("#res").empty();
-$("#res").append(html);
-}
-});
-}
-</script>
-</head>
-<body bgcolor="#AFEEEE">
-<div class="head" align="center">
- <p>Добро пожаловать!</p>
- <p>Система с биоментрической аутентификацией по клавиатурному почерку.</p>
- </div>
-<div class="info" id="idinfo" align="center"><a href="main.html"> About </a></div>
-<div class="training" id="idtraining" align="center"> <a href="training.html">Training mode </a></div>
-<div class="enter" id="identer" align="center"><a href="authenticate.html"> Try to authenticate </a></div>
-<div class="central" id="idcentral" align="center"> 
-<form action="authenticate.php" method="post">
-<p><h2>Введите ключевую фразу</h2></p/>
-<p><h3>Ключевая фраза: "здравствуйте гость"</h3></p/>
-<table>
-<tr>
-<td>Вводите фразу:</td>
-<td><input type="text" size="50" name="write" id="write" onKeyDown="keydown(event)" onKeyUp="keyup(event); savetime(event)"></td>
-<td><input type="submit" name="accept1" value="OK" onClick="$('#write').val(''); sendData(); return false"></td>
-</tr>
-<!--<tr>
-<td><input type="button" name="prov" value="check" onClick="show()"></td</td>
-<td><input type="submit" name="enter" value="Войти"></td>
-</tr>-->
-<tr>
-<td></td>
-<td><div id="res"></div></td>
-</tr>
-</table>
-</form>
-<p><a href="authenticate.html">Попробовать заново</a></p>
-<p></p>
-<p><a href="main.html">На главную</a></p>
-</div>
-</body>
+        function sendData(){
+            var sum =0;
+            for (var p in pressarray){
+                sum+=pressarray[p];
+            }
+            //alert(sum);
+            var M1=sum/pressarray.length;
+            for (var j = 0; j<down_container.length-1; j++){
+                mas[j] = down_container[j+1] - up_container[j];
+            }
+            //alert(massiv);
+            sum=0;
+            for (var p in mas){
+                sum+=mas[p];
+            }
+            //alert(sum);
+            var N1=sum/mas.length;
+            //alert("N="+N);
+            $.ajax({
+                type:"post",
+                url:"authenticate.php",
+                data: "M1="+M1+"&N1="+N1,
+                success: function(html){
+                    $("#res").empty();
+                    $("#res").append(html);
+                }
+            });
+        }
+    </script>
+  </head>
+  <body bgcolor="#AFEEEE">
+    <div class="head" align="center">
+      <p>Welcome!</p>
+      <p>Typing Rhytm Identification System</p>
+    </div>
+    <div class="info" id="idinfo" align="center"><a href="index.html"> About </a></div>
+    <div class="training" id="idtraining" align="center"> <a href="training.html">Training mode </a></div>
+    <div class="enter" id="identer" align="center"><a href="authenticate.html"> Try to authenticate </a></div>
+    <div class="central" id="idcentral" align="center"> 
+      <form action="authenticate.php" method="post">
+        <p><h2>Enter the phrase 5 times</h2></p/>
+        <p><h3>The phrase: "hello dear guest"</h3></p/>
+        <table>
+          <tr>
+            <td>Enter the phrase:</td>
+            <td><input type="text" size="50" name="write" id="write" onKeyDown="keydown(event)" onKeyUp="keyup(event); savetime(event)"></td>
+            <td><input type="submit" name="accept1" value="OK" onClick="$('#write').val(''); sendData(); return false"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><div id="res"></div></td>
+          </tr>
+        </table>
+      </form>
+      <p><a href="authenticate.html">Try Again</a></p>
+      <p></p>
+      <p><a href="index.html">Home</a></p>
+    </div>
+  </body>
 </html>
