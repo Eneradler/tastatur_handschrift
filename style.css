@@ -87,14 +87,20 @@ td {
 	border: 10px solid transparent;
 }
 
-textarea {
+textarea, input[type=text] {
 	display: block;
 	margin: 10px auto;
     font-size: 20px;
 	font-family: Aldrich;
+	border: 1px solid #f2f2f2;
+	border-radius: 10px; 
 }
 
-input[type=submit] {
+textarea:focus , input[type=text]:focus{
+    border: 1px solid #555;
+}
+
+input[type=submit], .try {
     width: 15%;
     background-color: #4682B4;
 	padding: 10px;
@@ -104,4 +110,16 @@ input[type=submit] {
     cursor: pointer;
 	font-size: 15px;
 	font-family: Aldrich;
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+input[type=submit]:hover, .try:hover {
+	background-color: #376891;
+}
+
+.try  a {
+	text-decoration: none;
+	display: block;
+	color: white;
 }

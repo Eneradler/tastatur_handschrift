@@ -2,9 +2,11 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authentication</title>
+    <title>TRIS</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="icon" href="img/keyboard.png">
+	<link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet"> 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
         var downtime=0;
@@ -79,32 +81,30 @@
     </script>
   </head>
   <body>
-    <div class="head" align="center">
-      <p>Welcome!</p>
-      <p>Typing Rhytm Identification System</p>
+    <div class="head">
+      <h1>Welcome to Typing Rhytm Identification System!</h1>
     </div>
-    <div class="info" id="idinfo" align="center"><a href="index.html"> About </a></div>
-    <div class="training" id="idtraining" align="center"> <a href="training.html">Training mode </a></div>
-    <div class="enter" id="identer" align="center"><a href="authenticate.html"> Try to authenticate </a></div>
-    <div class="central" id="idcentral" align="center"> 
+	<div class="menu">
+	  <ul>
+	    <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="training.html">Training mode</a></li>
+        <li><a class="active" href="authenticate.html">Try to authenticate</a></li>
+	  </ul>
+	</div>
+    <div class="main" id="main"> 
+	  <h2>Authentication mode</h2>
+      <br>
+      <p>Enter the phrase "hello dear guest" 5 times.</p>
       <form action="authenticate.php" method="post">
-        <p><h2>Enter the phrase 5 times</h2></p/>
-        <p><h3>The phrase: "hello dear guest"</h3></p/>
-        <table>
-          <tr>
-            <td>Enter the phrase:</td>
-            <td><input type="text" size="50" name="write" id="write" onKeyDown="keydown(event)" onKeyUp="keyup(event); savetime(event)"></td>
-            <td><input type="submit" name="accept1" value="OK" onClick="$('#write').val(''); sendData(); return false"></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><div id="res"></div></td>
-          </tr>
-        </table>
+        <label for="hint">Enter the phrase:</label>
+        <input type="text" size="50" name="write" id="write" onKeyDown="keydown(event)" onKeyUp="keyup(event); savetime(event)">
+        <input type="submit" name="accept1" value="OK" onClick="$('#write').val(''); sendData(); return false">
       </form>
-      <p><a href="authenticate.html">Try Again</a></p>
-      <p></p>
-      <p><a href="index.html">Home</a></p>
+	  <div class="try">
+        <p><a href="authenticate.html">Try Again</a></p>
+	  </div>
+	  <div id="res"></div>
     </div>
   </body>
 </html>
