@@ -1,14 +1,16 @@
 <!DOCTYPE HTML>
 <html>
   <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRIS</title>
+    <title>TRIS Training</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="icon" href="img/keyboard.png">
 	<link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet"> 
 	<link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet"> 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
+		// Variables for time, arrays to store press and release time and array indexes
         var ptime=0;
         var rtime=0;
         var counter = 1;
@@ -19,12 +21,12 @@
         var i=0;
         var k=0;
         var l=0;
-		
+		// Count number of typed phrases
         function count(){
             $('#quantity').val(counter);
             counter++;
         }
-
+		// Save time of each key press
         function pushtime(event){
             if(event.which){
                 var d = new Date();
@@ -33,7 +35,7 @@
                 k++;
             }
         }
-		
+		// Save time of each key release
         function releasetime(event){
             if(event.which){
                 var d = new Date();
@@ -42,14 +44,14 @@
                 l++; 
             }
         }
-
+        // Save the time difference between pressing and releasing the key
         function save(event){
             if(event.which){
                 array[i] = rtime-ptime;
                 i++;
             }
         }
-		
+		// Calculate indexes for biometric pattern and send to the server
         function send(){
             var sum =0;
             for (var p in array){
@@ -92,9 +94,9 @@
     <div class="main" id="main">
 	  <h2>Training Mode</h2>
       <br>
-      <p>Enter the phrase "hello dear guest" 5 times.</p>
+      <p>Type the phrase "hello dear guest" 5 times.</p>
       <form action="training.php" method="post">
-        <label for="hint">Enter the phrase:</label>
+        <label for="hint">Type the phrase:</label>
         <textarea cols="18" rows="6" name="phrase" id="phrase" onKeyDown="pushtime(event)" onKeyUp="releasetime(event); save(event)"></textarea>
         <input type="submit" name="accept" value="Accept" onClick="send();return false">
       </form>

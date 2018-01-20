@@ -1,14 +1,16 @@
 <!DOCTYPE HTML>
 <html>
   <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRIS</title>
+    <title>TRIS Authenticate</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="icon" href="img/keyboard.png">
 	<link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet"> 
 	<link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet"> 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
+	    // Variables for time, arrays to store press and release time and array indexes
         var downtime=0;
         var uptime=0;
         var pressarray = [];
@@ -18,7 +20,7 @@
         var k = 0;
         var l = 0;
         var mas = [];
-		
+		// Save time of each key press 
         function keydown(event){
             if(event.which){
                 var d = new Date();
@@ -27,7 +29,7 @@
                 k++;
             }
         }
-		
+		// Save time of each key release
         function keyup(event){
             if(event.which){
                 var d = new Date();
@@ -36,20 +38,20 @@
                 l++;
             }
         }
-
+        // Display values
         function show() {   
             alert(pressarray);
             alert(down_container);
             alert(up_container);
         }
-		
+		// Save the time difference between pressing and releasing the key
         function savetime(event){
             if(event.which){
             pressarray[i] = uptime-downtime;
             i++;
             }
         }
-
+		// Calculate indexes for biometric pattern and send to the server
         function sendData(){
             var sum =0;
             for (var p in pressarray){
@@ -95,10 +97,10 @@
     <div class="main" id="main"> 
 	  <h2>Authentication mode</h2>
       <br>
-      <p>Enter the phrase "hello dear guest" 5 times.</p>
+      <p>Type the phrase "hello dear guest" 5 times.</p>
       <form action="authenticate.php" method="post">
-        <label for="hint">Enter the phrase:</label>
-        <input type="text" size="50" name="write" id="write" onKeyDown="keydown(event)" onKeyUp="keyup(event); savetime(event)">
+        <label for="hint">Type the phrase:</label>
+        <input type="text" name="write" id="write" onKeyDown="keydown(event)" onKeyUp="keyup(event); savetime(event)">
         <input type="submit" name="accept1" value="OK" onClick="$('#write').val(''); sendData(); return false">
       </form>
 	  <div class="try">

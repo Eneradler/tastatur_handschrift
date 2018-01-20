@@ -27,7 +27,7 @@ body {
 ul {
 	list-style-type: none;
 	width: 20%;
-	background-color: #f1f1f1;
+	background-color: #f7f7f7;
 	border: 1px solid #555;
 	border-radius: 5px;
 	position: fixed;
@@ -87,6 +87,10 @@ td {
 	border: 10px solid transparent;
 }
 
+input[type=text] {
+	width: 80%;
+}
+
 textarea, input[type=text] {
 	display: block;
 	margin: 10px auto;
@@ -122,4 +126,66 @@ input[type=submit]:hover, .try:hover {
 	text-decoration: none;
 	display: block;
 	color: white;
+}
+
+@media only screen and (max-width: 480px){
+	.head {
+		font-size: 15px;
+	}
+	
+	ul {
+		width: 100%;
+		position: relative; 
+	}
+	
+	.menu {
+		width: 80%;
+		margin: 0 auto;
+	}
+	
+	.main {
+		width: 90%;
+		font-size: 18px;
+		margin-top: 20px;
+	}
+	
+	input[type=submit], .try {
+		width: 30%;
+	}
+	
+	input[type=text] {
+		width: 90%;
+	}
+}
+
+@media only screen and (min-width: 481px) and (max-width: 780px) {
+	.head {
+		font-size: 20px;
+	}
+	
+	input[type=submit], .try {
+		width: 30%;
+	}
+		
+	ul {
+		position: relative;
+		width: 100%;
+		overflow: hidden;
+	}
+	
+	li {
+        float: left;
+		width: 25%;
+		font-size: 15px;	
+		border-bottom: none;
+    }
+	
+	.menu {
+		width: 90%;
+		margin: 10px auto;
+	}
+	.main {
+		width: 90%;
+		font-size: 18px;
+	}
 }
